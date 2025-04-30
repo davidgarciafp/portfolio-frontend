@@ -20,6 +20,7 @@ const Header = () => {
           <button 
             onClick={toggleMenu}
             className="text-white focus:outline-none"
+            aria-label="Toggle menu"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               {isMenuOpen ? (
@@ -52,6 +53,11 @@ const Header = () => {
             isActive ? "text-blue-400 font-medium" : "hover:text-blue-400 transition-colors"
           }>
             Contacto
+          </NavLink>
+          <NavLink to="/admin" className={({ isActive }) => 
+            isActive ? "text-blue-400 font-medium" : "hover:text-blue-400 transition-colors"
+          }>
+            Admin
           </NavLink>
         </nav>
       </div>
@@ -95,6 +101,15 @@ const Header = () => {
               onClick={() => setIsMenuOpen(false)}
             >
               Contacto
+            </NavLink>
+            <NavLink 
+              to="/admin" 
+              className={({ isActive }) => 
+                isActive ? "text-blue-400 font-medium" : "hover:text-blue-400 transition-colors"
+              }
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Admin
             </NavLink>
           </nav>
         </div>

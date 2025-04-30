@@ -1,70 +1,91 @@
-# Getting Started with Create React App
+# Portfolio Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este es el frontend de mi portfolio personal, construido con React, React Router y Tailwind CSS.
 
-## Available Scripts
+## Tecnologías utilizadas
 
-In the project directory, you can run:
+- React
+- React Router
+- Tailwind CSS
+- Fetch API para comunicación con el backend
+
+## Estructura del proyecto
+
+```
+frontend/
+├── public/             # Archivos estáticos
+├── src/                # Código fuente
+│   ├── components/     # Componentes reutilizables
+│   │   └── layout/     # Componentes de layout (Header, Footer)
+│   ├── pages/          # Páginas principales
+│   ├── services/       # Servicios para comunicación con la API
+│   ├── App.js          # Componente principal
+│   └── index.js        # Punto de entrada
+└── package.json        # Dependencias y scripts
+```
+
+## Requisitos previos
+
+- Node.js (v14 o superior)
+- npm o yarn
+
+## Instalación
+
+1. Clona el repositorio:
+   ```
+   git clone https://github.com/yourusername/portfolio.git
+   cd portfolio/frontend
+   ```
+
+2. Instala las dependencias:
+   ```
+   npm install
+   ```
+
+3. Crea un archivo `.env` en la raíz del proyecto con la siguiente variable:
+   ```
+   REACT_APP_API_URL=http://localhost:5000/api
+   ```
+
+## Ejecución
+
+Para iniciar el servidor de desarrollo:
+
+```
+npm start
+```
+
+La aplicación estará disponible en [http://localhost:3000](http://localhost:3000).
+
+## Construcción para producción
+
+Para crear una versión optimizada para producción:
+
+```
+npm run build
+```
+
+Los archivos se generarán en la carpeta `build/`.
+
+## Conexión con el backend
+
+Este frontend se comunica con un backend Node.js/Express. Asegúrate de que el backend esté en ejecución en `http://localhost:5000` o actualiza la variable `REACT_APP_API_URL` en el archivo `.env` para apuntar a la URL correcta.
+
+## Comandos disponibles
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Ejecuta la aplicación en modo desarrollo.
+Abre [http://localhost:3000](http://localhost:3000) para verla en el navegador.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Lanza el ejecutor de pruebas en modo interactivo.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Construye la aplicación para producción en la carpeta `build`.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Licencia
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+MIT
