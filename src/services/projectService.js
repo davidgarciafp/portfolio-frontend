@@ -1,4 +1,4 @@
-const API_URL = process.env.REACT_APP_API_URL || "https://portfolio-backend-production-4cd3.up.railway.app/api";
+const API_URL = process.env.REACT_APP_API_URL || 'https://portfolio-backend-production-4cd3.up.railway.app/api';
 
 /**
  * Obtiene todos los proyectos desde la API
@@ -6,6 +6,7 @@ const API_URL = process.env.REACT_APP_API_URL || "https://portfolio-backend-prod
  */
 export const getProjects = async () => {
   try {
+    console.log('Fetching projects from:', `${API_URL}/projects`);
     const response = await fetch(`${API_URL}/projects`);
     
     if (!response.ok) {
@@ -13,6 +14,7 @@ export const getProjects = async () => {
     }
     
     const data = await response.json();
+    console.log('Projects fetched:', data);
     return data;
   } catch (error) {
     console.error('Error fetching projects:', error);
@@ -27,6 +29,7 @@ export const getProjects = async () => {
  */
 export const getProjectById = async (id) => {
   try {
+    console.log(`Fetching project with ID ${id} from:`, `${API_URL}/projects/${id}`);
     const response = await fetch(`${API_URL}/projects/${id}`);
     
     if (!response.ok) {
@@ -34,6 +37,7 @@ export const getProjectById = async (id) => {
     }
     
     const data = await response.json();
+    console.log('Project fetched:', data);
     return data;
   } catch (error) {
     console.error(`Error fetching project with id ${id}:`, error);
@@ -48,10 +52,12 @@ export const getProjectById = async (id) => {
  */
 export const createProject = async (projectData) => {
   try {
+    console.log('Creating project with data:', projectData);
     const response = await fetch(`${API_URL}/projects`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        // Aquí podrías añadir headers de autenticación si es necesario
       },
       body: JSON.stringify(projectData),
     });
@@ -61,6 +67,7 @@ export const createProject = async (projectData) => {
     }
     
     const data = await response.json();
+    console.log('Project created:', data);
     return data;
   } catch (error) {
     console.error('Error creating project:', error);
@@ -76,10 +83,12 @@ export const createProject = async (projectData) => {
  */
 export const updateProject = async (id, projectData) => {
   try {
+    console.log(`Updating project with ID ${id} with data:`, projectData);
     const response = await fetch(`${API_URL}/projects/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
+        // Aquí podrías añadir headers de autenticación si es necesario
       },
       body: JSON.stringify(projectData),
     });
@@ -89,6 +98,7 @@ export const updateProject = async (id, projectData) => {
     }
     
     const data = await response.json();
+    console.log('Project updated:', data);
     return data;
   } catch (error) {
     console.error(`Error updating project with id ${id}:`, error);
@@ -103,8 +113,12 @@ export const updateProject = async (id, projectData) => {
  */
 export const deleteProject = async (id) => {
   try {
+    console.log(`Deleting project with ID ${id}`);
     const response = await fetch(`${API_URL}/projects/${id}`, {
       method: 'DELETE',
+      headers: {
+        // Aquí podrías añadir headers de autenticación si es necesario
+      },
     });
     
     if (!response.ok) {
@@ -112,6 +126,7 @@ export const deleteProject = async (id) => {
     }
     
     const data = await response.json();
+    console.log('Project deleted:', data);
     return data;
   } catch (error) {
     console.error(`Error deleting project with id ${id}:`, error);

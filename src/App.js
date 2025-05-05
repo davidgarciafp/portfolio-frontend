@@ -6,9 +6,11 @@ import Footer from './components/layout/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
 import Projects from './pages/Projects';
-import ProjectDetail from './pages/ProjectDetail';
 import Contact from './pages/Contact';
+import Login from './pages/Login';
 import ProjectForm from "./components/ProjectForm";
+import ProtectedRoute from './components/ProtectedRoute';
+import { AuthProvider } from './context/AuthContext';
 
 function App() {
   const [projects, setProjects] = useState([]);
@@ -30,18 +32,20 @@ function App() {
   };
 
   return (
-    <Router>
-      <div className="flex flex-col min-h-screen bg-gray-50">
-        <Header />
-        <main className="flex-grow">
+    <AuthProvider>
+      <Router>
+        <div className="flex flex-col min-h-screen bg-gray-50">
+          <Header />
+          <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/projects" element={<Projects projects={projects} />} />
-            <Route path="/projects/:id" element={<ProjectDetail />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/admin" element={
-              <div className="container mx-auto px-4 py-8">
+              <ProtectedRoute>
+                <div className="container mx-auto px-4 py-8">
                 <h1 className="text-3xl font-bold mb-6">Panel de Administración</h1>
                 <ProjectForm onProjectCreated={handleProjectCreated} />
                 <div className="mt-8">
@@ -66,12 +70,14 @@ function App() {
                   )}
                 </div>
               </div>
+              </ProtectedRoute>
             } />
           </Routes>
         </main>
         <Footer />
       </div>
     </Router>
+    </AuthProvider>
   );
 }
 

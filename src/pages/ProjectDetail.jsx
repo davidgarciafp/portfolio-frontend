@@ -13,12 +13,20 @@ const ProjectDetail = () => {
     const fetchProject = async () => {
       try {
         setLoading(true);
+        console.log(`Fetching project with ID: ${id}`);
         const data = await getProjectById(id);
-        setProject(data);
-        setError(null);
+        
+        if (!data) {
+          console.log('Project not found');
+          setError('Proyecto no encontrado');
+        } else {
+          console.log('Project found:', data);
+          setProject(data);
+          setError(null);
+        }
       } catch (err) {
         console.error('Error fetching project:', err);
-        setError('No se pudo cargar el proyecto. Por favor, intenta de nuevo más tarde.');
+        setError(`Error al cargar el proyecto: ${err.message || 'Error desconocido'}`);
       } finally {
         setLoading(false);
       }
