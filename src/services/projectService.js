@@ -1,4 +1,4 @@
-const API_URL = process.env.REACT_APP_API_URL || 'https://portfolio-backend-production-4cd3.up.railway.app/api';
+const API_URL = process.env.REACT_APP_API_URL;
 
 /**
  * Obtiene todos los proyectos desde la API
@@ -6,16 +6,13 @@ const API_URL = process.env.REACT_APP_API_URL || 'https://portfolio-backend-prod
  */
 export const getProjects = async () => {
   try {
-    console.log('Fetching projects from:', `${API_URL}/projects`);
     const response = await fetch(`${API_URL}/projects`);
     
     if (!response.ok) {
       throw new Error(`Error: ${response.status} ${response.statusText}`);
     }
     
-    const data = await response.json();
-    console.log('Projects fetched:', data);
-    return data;
+    return await response.json();
   } catch (error) {
     console.error('Error fetching projects:', error);
     throw error;
@@ -29,18 +26,15 @@ export const getProjects = async () => {
  */
 export const getProjectById = async (id) => {
   try {
-    console.log(`Fetching project with ID ${id} from:`, `${API_URL}/projects/${id}`);
     const response = await fetch(`${API_URL}/projects/${id}`);
     
     if (!response.ok) {
       throw new Error(`Error: ${response.status} ${response.statusText}`);
     }
     
-    const data = await response.json();
-    console.log('Project fetched:', data);
-    return data;
+    return await response.json();
   } catch (error) {
-    console.error(`Error fetching project with id ${id}:`, error);
+    console.error(`Error fetching project with ID ${id}:`, error);
     throw error;
   }
 };
@@ -52,23 +46,22 @@ export const getProjectById = async (id) => {
  */
 export const createProject = async (projectData) => {
   try {
-    console.log('Creating project with data:', projectData);
+    console.log('Creando proyecto con datos:', projectData);
+    
     const response = await fetch(`${API_URL}/projects`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        // Aquí podrías añadir headers de autenticación si es necesario
       },
       body: JSON.stringify(projectData),
     });
     
     if (!response.ok) {
-      throw new Error(`Error: ${response.status} ${response.statusText}`);
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.message || `Error: ${response.status} ${response.statusText}`);
     }
     
-    const data = await response.json();
-    console.log('Project created:', data);
-    return data;
+    return await response.json();
   } catch (error) {
     console.error('Error creating project:', error);
     throw error;
@@ -83,25 +76,27 @@ export const createProject = async (projectData) => {
  */
 export const updateProject = async (id, projectData) => {
   try {
-    console.log(`Updating project with ID ${id} with data:`, projectData);
+    console.log(`Actualizando proyecto ${id} con datos:`, projectData);
+    
     const response = await fetch(`${API_URL}/projects/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        // Aquí podrías añadir headers de autenticación si es necesario
       },
       body: JSON.stringify(projectData),
     });
     
     if (!response.ok) {
-      throw new Error(`Error: ${response.status} ${response.statusText}`);
+      // Intentar obtener el mensaje de error del servidor
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.message || `Error: ${response.status} ${response.statusText}`);
     }
     
-    const data = await response.json();
-    console.log('Project updated:', data);
-    return data;
+    const updatedProject = await response.json();
+    console.log('Proyecto actualizado:', updatedProject);
+    return updatedProject;
   } catch (error) {
-    console.error(`Error updating project with id ${id}:`, error);
+    console.error(`Error updating project with ID ${id}:`, error);
     throw error;
   }
 };
@@ -113,23 +108,19 @@ export const updateProject = async (id, projectData) => {
  */
 export const deleteProject = async (id) => {
   try {
-    console.log(`Deleting project with ID ${id}`);
     const response = await fetch(`${API_URL}/projects/${id}`, {
       method: 'DELETE',
-      headers: {
-        // Aquí podrías añadir headers de autenticación si es necesario
-      },
+      method: 'DELETE',
     });
     
     if (!response.ok) {
-      throw new Error(`Error: ${response.status} ${response.statusText}`);
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.message || `Error: ${response.status} ${response.statusText}`);
     }
     
-    const data = await response.json();
-    console.log('Project deleted:', data);
-    return data;
+    return await response.json();
   } catch (error) {
-    console.error(`Error deleting project with id ${id}:`, error);
+    console.error(`Error deleting project with ID ${id}:`, error);
     throw error;
   }
 };

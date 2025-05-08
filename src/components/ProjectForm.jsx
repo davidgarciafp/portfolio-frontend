@@ -1,19 +1,45 @@
-import React, { useState } from 'react';
-import { createProject } from '../services/projectService';
+import React, { useState, useEffect } from 'react';
+import { createProject, updateProject } from '../services/projectService';
 
-const ProjectForm = ({ onProjectCreated }) => {
+const ProjectForm = ({ onProjectCreated, onProjectUpdated, project }) => {
   const [formData, setFormData] = useState({
     name: '',
     description: '',
     technologies: '',
     url: '',
-    imageUrl: '',
-    github: ''
+    imageUrl: ''
   });
   
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  
+  // Cargar datos del proyecto si estamos en modo edición
+  useEffect(() => {
+    if (project) {
+      setFormData({
+        name: project.name || '',
+        description: project.description || '',
+        technologies: Array.isArray(project.technologies) ? project.technologies.join(', ') : '',
+        url: project.url || '',
+        imageUrl: project.imageUrl || ''
+      });
+    } else {
+      // Limpiar el formulario si no hay proyecto para editar
+      resetForm();
+    }
+  }, [project]);
+  
+  const resetForm = () => {
+    setFormData({
+      name: '',
+      description: '',
+      technologies: '',
+      url: '',
+      imageUrl: ''
+    });
+    setErrors({});
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -54,10 +80,6 @@ const ProjectForm = ({ onProjectCreated }) => {
       newErrors.imageUrl = 'La URL de la imagen debe comenzar con http:// o https://';
     }
     
-    if (formData.github && !/^https?:\/\/.+/i.test(formData.github)) {
-      newErrors.github = 'La URL de GitHub debe comenzar con http:// o https://';
-    }
-    
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -79,27 +101,36 @@ const ProjectForm = ({ onProjectCreated }) => {
         technologies: formData.technologies.split(',').map(tech => tech.trim())
       };
       
-      const savedProject = await createProject(projectData);
-      
-      setSubmitStatus({
-        success: true,
-        message: 'Proyecto creado correctamente'
-      });
-      
-      // Notificar al componente padre
-      if (onProjectCreated) {
-        onProjectCreated(savedProject);
+      if (project) {
+        // Modo edición
+        const updatedProject = await updateProject(project._id, projectData);
+        
+        setSubmitStatus({
+          success: true,
+          message: 'Proyecto actualizado correctamente'
+        });
+        
+        // Notificar al componente padre
+        if (onProjectUpdated) {
+          onProjectUpdated(updatedProject);
+        }
+      } else {
+        // Modo creación
+        const savedProject = await createProject(projectData);
+        
+        setSubmitStatus({
+          success: true,
+          message: 'Proyecto creado correctamente'
+        });
+        
+        // Notificar al componente padre
+        if (onProjectCreated) {
+          onProjectCreated(savedProject);
+        }
+        
+        // Limpiar el formulario
+        resetForm();
       }
-      
-      // Limpiar el formulario
-      setFormData({
-        name: '',
-        description: '',
-        technologies: '',
-        url: '',
-        imageUrl: '',
-        github: ''
-      });
     } catch (error) {
       console.error('Error al crear el proyecto:', error);
       setSubmitStatus({
@@ -113,7 +144,9 @@ const ProjectForm = ({ onProjectCreated }) => {
 
   return (
     <div className="bg-white rounded-lg shadow-md p-6">
-      <h2 className="text-2xl font-bold text-gray-800 mb-6">Crear Nuevo Proyecto</h2>
+      <h2 className="text-2xl font-bold text-gray-800 mb-6">
+        {project ? 'Editar Proyecto' : 'Crear Nuevo Proyecto'}
+      </h2>
       
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -153,7 +186,7 @@ const ProjectForm = ({ onProjectCreated }) => {
             {errors.technologies && <p className="text-red-500 text-sm mt-1">{errors.technologies}</p>}
           </div>
           
-          <div className="col-span-2">
+          <div className="col-span-1 md:col-span-2">
             <label htmlFor="description" className="block text-gray-700 font-medium mb-2">
               Descripción *
             </label>
@@ -189,23 +222,6 @@ const ProjectForm = ({ onProjectCreated }) => {
             {errors.url && <p className="text-red-500 text-sm mt-1">{errors.url}</p>}
           </div>
           
-          <div className="col-span-1">
-            <label htmlFor="github" className="block text-gray-700 font-medium mb-2">
-              URL de GitHub
-            </label>
-            <input
-              type="text"
-              id="github"
-              name="github"
-              value={formData.github}
-              onChange={handleChange}
-              className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                errors.github ? 'border-red-500' : 'border-gray-300'
-              }`}
-              placeholder="https://github.com/usuario/proyecto"
-            />
-            {errors.github && <p className="text-red-500 text-sm mt-1">{errors.github}</p>}
-          </div>
           
           <div className="col-span-2">
             <label htmlFor="imageUrl" className="block text-gray-700 font-medium mb-2">
@@ -245,7 +261,7 @@ const ProjectForm = ({ onProjectCreated }) => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-colors duration-300 flex items-center disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-colors duration-300 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? (
               <>
@@ -253,10 +269,10 @@ const ProjectForm = ({ onProjectCreated }) => {
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
-                Creando...
+                {project ? 'Actualizando...' : 'Creando...'}
               </>
             ) : (
-              'Crear Proyecto'
+              project ? 'Actualizar Proyecto' : 'Crear Proyecto'
             )}
           </button>
         </div>

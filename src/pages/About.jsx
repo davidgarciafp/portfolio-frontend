@@ -21,16 +21,11 @@ const About = () => {
             <div className="md:flex">
               {/* Profile Image Section */}
               <div className="md:w-1/3 bg-gray-100 p-8 flex flex-col items-center justify-center">
-                <img 
-                  src="/profile-image.png" 
-                  alt="Tu Nombre" 
-                  className="rounded-full w-48 h-48 object-cover border-4 border-white shadow-lg mb-6"
-                />
-                <h2 className="text-2xl font-bold text-gray-800 mb-2">Tu Nombre</h2>
+                <h2 className="text-2xl font-bold text-gray-800 mb-2">David García</h2>
                 <p className="text-gray-600 mb-4 text-center">Desarrollador Web Full Stack</p>
                 <div className="flex space-x-4 mb-6">
                   <a 
-                    href="https://github.com/yourusername" 
+                    href="https://github.com/davidgarciafp" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="text-gray-600 hover:text-gray-900"
@@ -40,7 +35,7 @@ const About = () => {
                     </svg>
                   </a>
                   <a 
-                    href="https://linkedin.com/in/yourusername" 
+                    href="https://www.linkedin.com/in/david-garc%C3%ADa-fern%C3%A1ndez-80b272252/" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="text-gray-600 hover:text-gray-900"
@@ -50,7 +45,7 @@ const About = () => {
                     </svg>
                   </a>
                   <a 
-                    href="mailto:tu@email.com" 
+                    href="mailto:davidgf444@gmail.com" 
                     className="text-gray-600 hover:text-gray-900"
                   >
                     <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -75,14 +70,13 @@ const About = () => {
                   utilizando MongoDB como base de datos principal.
                 </p>
                 <p className="text-gray-700 mb-6 leading-relaxed">
-                  Mi pasión por la programación comenzó durante mis estudios universitarios, donde descubrí el poder de crear 
+                  Mi pasión por la programación comenzó durante mis estudios de formación profesional, donde descubrí el poder de crear 
                   soluciones digitales que resuelven problemas reales. Desde entonces, he trabajado en diversos proyectos que 
                   me han permitido perfeccionar mis habilidades técnicas y de resolución de problemas.
                 </p>
                 <p className="text-gray-700 leading-relaxed">
                   Me encanta aprender nuevas tecnologías y mantenerme actualizado con las últimas tendencias en desarrollo web. 
-                  Actualmente estoy explorando arquitecturas serverless y mejorando mis conocimientos en DevOps para optimizar 
-                  los procesos de desarrollo y despliegue.
+                  Actualmente estoy trabajando el proyectos de diversas tecnologías para mejorar mis competencias en cualquier situación.
                 </p>
                 
                 <div className="mt-8">
@@ -124,6 +118,30 @@ const About = () => {
                       <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
                       <span>RESTful APIs</span>
                     </div>
+                    <div className="flex items-center">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                      <span>Laravel</span>
+                    </div>
+                    <div className="flex items-center">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                      <span>PHP</span>
+                    </div>
+                    <div className="flex items-center">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                      <span>JavaFX</span>
+                    </div>
+                    <div className="flex items-center">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                      <span>Phaser</span>
+                    </div>
+                    <div className="flex items-center">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                      <span>SCSS</span>
+                    </div>
+                    <div className="flex items-center">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                      <span>SQL</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -147,31 +165,19 @@ const About = () => {
               
               <div className="mb-8 relative pl-8 border-l-2 border-blue-200">
                 <div className="absolute w-4 h-4 bg-blue-500 rounded-full -left-[9px] top-0"></div>
-                <h4 className="text-xl font-bold text-gray-800">Desarrollador Full Stack</h4>
-                <p className="text-gray-600 mb-2">Empresa XYZ • 2021 - Presente</p>
+                <h4 className="text-xl font-bold text-gray-800">Soporte técnico</h4>
+                <p className="text-gray-600 mb-2">Sosmatic • Febrero 2024 - Presente</p>
                 <p className="text-gray-700">
-                  Desarrollo de aplicaciones web utilizando React, Node.js y MongoDB. 
-                  Implementación de APIs RESTful y optimización de rendimiento.
+                Resolución gestión y escalado de incidencias de Software a usuarios finales en el Proyecto EAE Business School. Mantenimiento, montaje y desmontaje de equipos informáticos, maquetación de dispositivos empresariales, instalación de equipos en dominio, altas de usuario, soporte técnico para Office 365.
                 </p>
               </div>
               
               <div className="mb-8 relative pl-8 border-l-2 border-blue-200">
                 <div className="absolute w-4 h-4 bg-blue-500 rounded-full -left-[9px] top-0"></div>
-                <h4 className="text-xl font-bold text-gray-800">Desarrollador Frontend</h4>
-                <p className="text-gray-600 mb-2">Empresa ABC • 2019 - 2021</p>
+                <h4 className="text-xl font-bold text-gray-800">Técnico informático</h4>
+                <p className="text-gray-600 mb-2">SCC Spain • Octubre 2023 - Agosto 2024</p>
                 <p className="text-gray-700">
-                  Desarrollo de interfaces de usuario con React y Redux. 
-                  Colaboración en equipos ágiles y mejora de la experiencia de usuario.
-                </p>
-              </div>
-              
-              <div className="relative pl-8 border-l-2 border-blue-200">
-                <div className="absolute w-4 h-4 bg-blue-500 rounded-full -left-[9px] top-0"></div>
-                <h4 className="text-xl font-bold text-gray-800">Desarrollador Web Junior</h4>
-                <p className="text-gray-600 mb-2">Startup DEF • 2018 - 2019</p>
-                <p className="text-gray-700">
-                  Desarrollo de sitios web responsivos con HTML, CSS y JavaScript.
-                  Mantenimiento y actualización de sitios existentes.
+                Resolución  gestión  y  escalado  de  incidencias  de  Software  a  usuarios  finales  en  el  Proyecto  Alcampo,  Registro digital de operaciones e incidencias en GLPI, maquetación de dispositivos empresariales mantenimiento de equipos informáticos, gestión de cableado de redes, instalación de impresoras y programas.
                 </p>
               </div>
             </div>
@@ -189,41 +195,21 @@ const About = () => {
               
               <div className="mb-8 relative pl-8 border-l-2 border-blue-200">
                 <div className="absolute w-4 h-4 bg-blue-500 rounded-full -left-[9px] top-0"></div>
-                <h4 className="text-xl font-bold text-gray-800">Máster en Desarrollo Web</h4>
-                <p className="text-gray-600 mb-2">Universidad XYZ • 2017 - 2018</p>
+                <h4 className="text-xl font-bold text-gray-800">Grado Superior en Desarrollo de Aplicaciones Web (DAW)</h4>
+                <p className="text-gray-600 mb-2">INS La Pineda • 2024 - Presente</p>
                 <p className="text-gray-700">
-                  Especialización en tecnologías web modernas, arquitectura de aplicaciones
-                  y metodologías ágiles de desarrollo.
+                  Actualmente finalizando mis estudios de formación profesional en Desarrollo de Aplicaciones Web.
+                  Especialización en tecnologías web modernas, desarrollo frontend y backend.
                 </p>
               </div>
               
               <div className="mb-8 relative pl-8 border-l-2 border-blue-200">
                 <div className="absolute w-4 h-4 bg-blue-500 rounded-full -left-[9px] top-0"></div>
-                <h4 className="text-xl font-bold text-gray-800">Grado en Ingeniería Informática</h4>
-                <p className="text-gray-600 mb-2">Universidad ABC • 2013 - 2017</p>
+                <h4 className="text-xl font-bold text-gray-800">Grado Medio en Sistemas Microinformáticos y Redes</h4>
+                <p className="text-gray-600 mb-2">FP Llefià • 2019 - 2021</p>
                 <p className="text-gray-700">
-                  Fundamentos de programación, estructuras de datos, algoritmos,
-                  bases de datos y desarrollo de software.
+                  Montaje y mantenimiento de equipos, Redes locales, Sistemas operativos en red, Seguridad informática, Aplicaciones Ofimáticas y Servicios de Red.
                 </p>
-              </div>
-              
-              <h3 className="text-2xl font-bold text-gray-800 mt-10 mb-6 flex items-center">
-                <svg className="w-6 h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-                Certificaciones
-              </h3>
-              
-              <div className="mb-4 relative pl-8 border-l-2 border-blue-200">
-                <div className="absolute w-4 h-4 bg-blue-500 rounded-full -left-[9px] top-0"></div>
-                <h4 className="text-xl font-bold text-gray-800">MongoDB Certified Developer</h4>
-                <p className="text-gray-600">MongoDB University • 2020</p>
-              </div>
-              
-              <div className="relative pl-8 border-l-2 border-blue-200">
-                <div className="absolute w-4 h-4 bg-blue-500 rounded-full -left-[9px] top-0"></div>
-                <h4 className="text-xl font-bold text-gray-800">AWS Certified Developer</h4>
-                <p className="text-gray-600">Amazon Web Services • 2019</p>
               </div>
             </div>
           </div>

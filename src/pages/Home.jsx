@@ -38,19 +38,18 @@ const Home = () => {
 
   return (
     <div>
-      {/* Hero Section */}
+      {/* Hero Section - Centrado */}
       <section className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-20">
-        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
-          <div className="md:w-1/2 mb-10 md:mb-0">
+        <div className="container mx-auto px-4 text-center">
+          <div className="max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Hola, soy <span className="text-yellow-300">Tu Nombre</span>
+              Hola, soy <span className="text-yellow-300">David García</span>
             </h1>
             <h2 className="text-2xl md:text-3xl mb-6">Desarrollador Web Full Stack</h2>
             <p className="text-lg mb-8">
-              Especializado en crear aplicaciones web modernas y responsivas
-              utilizando las últimas tecnologías como React, Node.js y MongoDB.
+              Especializado en el desarrollo de aplicaciones web modernas y responsivas, aplicando herramientas y metodologías actuales para ofrecer soluciones eficientes y escalables.
             </p>
-            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+            <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
               <Link 
                 to="/projects" 
                 className="bg-white text-blue-700 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium transition-colors duration-300 text-center"
@@ -64,17 +63,6 @@ const Home = () => {
                 Contactar
               </Link>
             </div>
-          </div>
-          <div className="md:w-1/2 flex justify-center">
-            <img 
-              src="/profile-image.png" 
-              alt="Tu Nombre" 
-              className="rounded-full w-64 h-64 object-cover border-4 border-white shadow-lg"
-              onError={(e) => {
-                e.target.onerror = null;
-                e.target.src = 'https://via.placeholder.com/300x300?text=Tu+Foto';
-              }}
-            />
           </div>
         </div>
       </section>
@@ -232,40 +220,27 @@ const Home = () => {
         </div>
       </section>
 
-      {/* About Me Section */}
+      {/* About Me Section - Centrado */}
       <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center">
-            <div className="md:w-1/2 mb-8 md:mb-0 md:pr-8">
-              <img 
-                src="/about-image.jpg" 
-                alt="Sobre mí" 
-                className="rounded-lg shadow-lg w-full max-w-md mx-auto"
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src = 'https://via.placeholder.com/600x400?text=Sobre+Mi';
-                }}
-              />
-            </div>
-            <div className="md:w-1/2">
-              <h2 className="text-3xl font-bold mb-6">Sobre Mí</h2>
-              <p className="text-gray-700 mb-4 leading-relaxed">
-                Soy un desarrollador web full stack apasionado por crear experiencias digitales 
-                excepcionales. Con experiencia en React, Node.js y MongoDB, me especializo en 
-                construir aplicaciones web modernas y responsivas.
-              </p>
-              <p className="text-gray-700 mb-6 leading-relaxed">
-                Mi enfoque se centra en escribir código limpio y mantenible, con un fuerte 
-                énfasis en la experiencia del usuario y el rendimiento. Siempre estoy aprendiendo 
-                nuevas tecnologías y mejorando mis habilidades.
-              </p>
-              <Link 
-                to="/about" 
-                className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-300"
-              >
-                Más sobre mí
-              </Link>
-            </div>
+        <div className="container mx-auto px-4 text-center">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold mb-6">Sobre Mí</h2>
+            <p className="text-gray-700 mb-4 leading-relaxed">
+              Soy un desarrollador web full stack apasionado por crear experiencias digitales 
+              excepcionales. Me especializo en 
+              construir aplicaciones web modernas y responsivas.
+            </p>
+            <p className="text-gray-700 mb-6 leading-relaxed">
+              Mi enfoque se centra en escribir código limpio y mantenible, con un fuerte 
+              énfasis en la experiencia del usuario y el rendimiento. Siempre estoy aprendiendo 
+              nuevas tecnologías y mejorando mis habilidades.
+            </p>
+            <Link 
+              to="/about" 
+              className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-300"
+            >
+              Más sobre mí
+            </Link>
           </div>
         </div>
       </section>
@@ -273,7 +248,7 @@ const Home = () => {
       {/* Call to Action */}
       <section className="py-16 bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">¿Listo para trabajar juntos?</h2>
+          <h2 className="text-3xl font-bold mb-4">¿Trabajamos juntos?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             Estoy disponible para proyectos freelance y colaboraciones. 
             Contáctame para discutir cómo puedo ayudarte a llevar tu idea al siguiente nivel.

@@ -20,7 +20,7 @@ const Header = () => {
     <header className="bg-gray-800 text-white shadow-md">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Link to="/" className="text-2xl font-bold">
-          <span className="text-blue-400">Mi</span>Portfolio
+          <span className="text-blue-400">Portfolio </span>David García
         </Link>
 
         {/* Menú para móvil */}
