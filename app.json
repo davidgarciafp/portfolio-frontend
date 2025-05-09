@@ -1,0 +1,15 @@
+{
+  "name": "portfolio-frontend",
+  "description": "Frontend para mi portfolio personal",
+  "keywords": [
+    "react",
+    "portfolio",
+    "frontend"
+  ],
+  "env": {
+    "REACT_APP_API_URL": {
+      "description": "URL de la API backend",
+      "value": "http://portfolio-backend.ubuntu"
+    }
+  }
+}
