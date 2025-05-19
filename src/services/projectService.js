@@ -1,4 +1,4 @@
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 /**
  * Obtiene todos los proyectos desde la API
@@ -48,10 +48,17 @@ export const createProject = async (projectData) => {
   try {
     console.log('Creando proyecto con datos:', projectData);
     
+    const token = localStorage.getItem('authToken');
+    
+    if (!token) {
+      throw new Error('No hay token de autenticación');
+    }
+    
     const response = await fetch(`${API_URL}/projects`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'x-auth-token': token
       },
       body: JSON.stringify(projectData),
     });
@@ -78,10 +85,17 @@ export const updateProject = async (id, projectData) => {
   try {
     console.log(`Actualizando proyecto ${id} con datos:`, projectData);
     
+    const token = localStorage.getItem('authToken');
+    
+    if (!token) {
+      throw new Error('No hay token de autenticación');
+    }
+    
     const response = await fetch(`${API_URL}/projects/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
+        'x-auth-token': token
       },
       body: JSON.stringify(projectData),
     });
@@ -108,9 +122,17 @@ export const updateProject = async (id, projectData) => {
  */
 export const deleteProject = async (id) => {
   try {
+    const token = localStorage.getItem('authToken');
+    
+    if (!token) {
+      throw new Error('No hay token de autenticación');
+    }
+    
     const response = await fetch(`${API_URL}/projects/${id}`, {
       method: 'DELETE',
-      method: 'DELETE',
+      headers: {
+        'x-auth-token': token
+      }
     });
     
     if (!response.ok) {

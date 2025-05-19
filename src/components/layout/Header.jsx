@@ -70,12 +70,6 @@ const Header = () => {
               }>
                 Admin
               </NavLink>
-              <button 
-                onClick={handleLogout}
-                className="text-red-300 hover:text-red-400 transition-colors"
-              >
-                Cerrar sesión
-              </button>
             </>
           )}
         </nav>
