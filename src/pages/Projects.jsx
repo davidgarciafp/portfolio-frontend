@@ -111,14 +111,14 @@ const Projects = () => {
               JavaScript
             </button>
             <button 
-              onClick={() => setFilter('java')}
+              onClick={() => setFilter('sql')}
               className={`px-4 py-2 rounded-full text-sm font-medium ${
-                filter === 'java' 
+                filter === 'sql' 
                   ? 'bg-blue-600 text-white' 
                   : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
               }`}
             >
-              Java
+              SQL
             </button>
           </div>
         </div>
