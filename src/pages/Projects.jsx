@@ -100,6 +100,26 @@ const Projects = () => {
             >
               MongoDB
             </button>
+            <button 
+              onClick={() => setFilter('javascript')}
+              className={`px-4 py-2 rounded-full text-sm font-medium ${
+                filter === 'javascript' 
+                  ? 'bg-blue-600 text-white' 
+                  : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
+              }`}
+            >
+              JavaScript
+            </button>
+            <button 
+              onClick={() => setFilter('java')}
+              className={`px-4 py-2 rounded-full text-sm font-medium ${
+                filter === 'java' 
+                  ? 'bg-blue-600 text-white' 
+                  : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
+              }`}
+            >
+              Java
+            </button>
           </div>
         </div>
       </section>
