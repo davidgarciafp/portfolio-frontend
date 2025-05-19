@@ -8,8 +8,8 @@ import About from './pages/About';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
 import Login from './pages/Login';
-import Admin from './components/admin/Admin';
-import EditProject from './components/admin/EditProject';
+import AdminDashboard from './components/admin/AdminDashboard';
+import EditProject from './pages/EditProject';
 import ProtectedRoute from './components/ProtectedRoute';
 import { AuthProvider } from './context/AuthContext';
 
@@ -31,7 +31,7 @@ function App() {
                 <>
                   <Route path="/" element={
                     <ProtectedRoute>
-                      <Admin />
+                      <AdminDashboard />
                     </ProtectedRoute>
                   } />
                   <Route path="/projects/edit/:id" element={
@@ -52,7 +52,7 @@ function App() {
                   <Route path="/login" element={<Login />} />
                   <Route path="/admin" element={
                     <ProtectedRoute>
-                      <Admin />
+                      <AdminDashboard />
                     </ProtectedRoute>
                   } />
                   <Route path="/admin/projects/edit/:id" element={
